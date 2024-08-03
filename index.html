@@ -12,7 +12,7 @@
     </header>
 
     <section>
-      <header>
+      <header class="what-is">
         <h2>What is this for?</h2>
         <p>
           This web application is designed to help you efficiently manage your
@@ -58,50 +58,115 @@
       </header>
     </section>
 
-    <h2>One Day at a Time</h2>
+    <div class="container">
+      <div class="column-one">
+        <h2>One Day at a Time</h2>
+        <div id="tasks" class="tasks-box">
+          <h2>Today's Tasks</h2>
+          <ul>
+            <li>Task 1</li>
+            <li>Task 2</li>
+            <li>Task 3</li>
+          </ul>
+        </div>
 
-    <section>
-      <h2>Date</h2>
-      <p>2024-01-01</p>
-      <h2>Today's Tasks</h2>
-      <ul>
-        <li>Task 1</li>
-        <li>Task 2</li>
-        <li>Task 3</li>
-      </ul>
-      <h2>Priorities</h2>
-      <ul>
-        <li>Priority 1</li>
-        <li>Priority 2</li>
-        <li>Priority 3</li>
-      </ul>
-      <h2>This Week</h2>
-      <ul>
-        <li>Mon</li>
-        <li>Tue</li>
-        <li>Wed</li>
-        <li>Thur</li>
-        <li>Fri</li>
-        <li>Sat</li>
-        <li>Sun</li>
-      </ul>
-      <h2>Today's Mood</h2>
-      <p>Happy</p>
-      <p>Sad</p>
-      <p>Angry</p>
-      <p>Excited</p>
-      <div>
-        <span>Notes</span>
-        <span><textarea></textarea></span>
+        <div id="priorities" class="priorities-box">
+          <h2>Priorities</h2>
+          <ul>
+            <li>Priority 1</li>
+            <li>Priority 2</li>
+            <li>Priority 3</li>
+          </ul>
+          <img src="mood/heart.avif" alt="Red heart" class="heart" />
+        </div>
+
+        <div id="gratitude" class="gratitude-box">
+          <p>Gratitude</p>
+          <textarea class="textarea"></textarea>
+        </div>
       </div>
-      <div>
-        <span>Gratitude</span>
-        <span><textarea></textarea></span>
+
+      <div class="column-two">
+        <div id="week" class="week-box">
+          <h2>This Week</h2>
+          <span>
+            <input type="radio" id="Monday" name="week" value="Mon" />
+            <label for="Monday">Mon</label>
+            <input type="radio" id="Tuesday" name="week" value="Tue" />
+            <label for="Tuesday">Tue</label>
+            <input type="radio" id="Wednesday" name="week" value="Wed" />
+            <label for="Wednesday">Wed</label>
+            <input type="radio" id="Thursday" name="week" value="Thur" />
+            <label for="THursday">Thur</label>
+            <input type="radio" id="Friday" name="week" value="Fri" />
+            <label for="Friday">Fri</label>
+            <input type="radio" id="Saturday" name="week" value="Sat" />
+            <label for="Saturday">Sat</label>
+            <input type="radio" id="Sunday" name="week" value="Sun" />
+            <label for="Sunday">Sun</label>
+          </span>
+        </div>
+
+        <div id="date" class="date-box">
+          <h2>Date</h2>
+          <p>2024-01-01</p>
+        </div>
+
+        <div id="mood" class="mood-box">
+          <h2>Today's Mood</h2>
+          <span>
+            <input type="radio" id="excited" name="emotion" value="excited" />
+            <label for="excited">
+              <img
+                src="mood/excited.jpg"
+                alt="Excited face"
+                width="50"
+                height="50"
+              />
+            </label>
+            <input type="radio" id="happy" name="emotion" value="happy" />
+            <label for="happy">
+              <img
+                src="mood/happy.png"
+                alt="Happy face"
+                width="50"
+                height="50"
+              />
+            </label>
+            <input type="radio" id="neutral" name="emotion" value="neutral" />
+            <label for="neutral">
+              <img
+                src="mood/neautral.png"
+                alt="Neutral face"
+                width="50"
+                height="50"
+              />
+            </label>
+            <input type="radio" id="sad" name="emotion" value="sad" />
+            <label for="sad">
+              <img src="mood/sad.png" alt="Sad face" width="50" height="50" />
+            </label>
+            <input type="radio" id="angry" name="emotion" value="angry" />
+            <label for="angry">
+              <img
+                src="mood/angry.png"
+                alt="Angry face"
+                width="50"
+                height="50"
+              />
+            </label>
+          </span>
+        </div>
+
+        <div id="notes" class="notes-box">
+          <p>Notes</p>
+          <textarea class="textarea"></textarea>
+        </div>
       </div>
-    </section>
+    </div>
 
     <footer>
       <p>&copy; 2024 One Day at a Time!</p>
     </footer>
   </body>
-</html> 
+</html>
