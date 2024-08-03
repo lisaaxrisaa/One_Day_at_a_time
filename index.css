@@ -1,0 +1,95 @@
+body {
+  font-family: sans-serif;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.what-is {
+  background-color: #a1c5ff;
+  color: white;
+}
+
+.container {
+  display: grid;
+  /* box-sizing: border-box; */
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  border: solid black 2px;
+  padding: 30px;
+  border-radius: 25px;
+}
+
+.date-box {
+  background-color: #a1c5ff;
+  color: white;
+  text-align: center;
+  place-content: center;
+  /* margin: 30px 0px 30px 0px; */
+  height: 100px;
+  border-radius: 15px;
+  margin-top: 20px;
+}
+
+.mood-box {
+  text-align: center;
+  place-content: center;
+}
+
+.week-box: {
+  text-align: center;
+  place-content: center;
+}
+
+.tasks-box {
+  background-color: #a1c5ff;
+  color: white;
+  border-radius: 15px;
+  text-align: center;
+  place-content: center;
+}
+
+.priorities-box {
+  background-color: #f0c8c8;
+  color: white;
+  height: 300px;
+  border-radius: 15px;
+  margin-top: 20px;
+  text-align: center;
+  place-content: center;
+}
+
+.priorities-box img {
+  text-align: left;
+}
+
+.heart {
+  height: 125px;
+  width: 100px;
+  mix-blend-mode: multiply;
+  text-align: left;
+}
+
+.notes-box {
+  background-color: #f0c8c8;
+  color: white;
+  border-radius: 15px;
+  height: 350px;
+  margin-top: 20px;
+  text-align: center;
+  place-content: center;
+}
+
+.gratitude-box {
+  background-color: #a1c5ff;
+  color: white;
+  border-radius: 15px;
+  height: 200px;
+  margin-top: 20px;
+  text-align: center;
+  place-content: center;
+}
+
+.textarea {
+  height: 100px;
+  width: 400px;
+}
