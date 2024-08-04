@@ -1,11 +1,11 @@
 body {
   font-family: sans-serif;
-  width: 60%;
+  width: 50%;
   margin: 0 auto;
 }
 
 .what-is {
-  background-color: #a1c5ff;
+  background-color: #6688be;
   color: white;
 }
 
@@ -13,6 +13,10 @@ body {
   display: grid;
   /* box-sizing: border-box; */
   grid-template-columns: 1fr 1fr;
+  /* display: flex;
+  flex-direction: grid;
+  justify-content: center;
+  align-items: center; */
   gap: 20px;
   border: solid black 2px;
   padding: 30px;
@@ -20,7 +24,7 @@ body {
 }
 
 .date-box {
-  background-color: #a1c5ff;
+  background-color: #799fdc;
   color: white;
   text-align: center;
   place-content: center;
@@ -33,6 +37,9 @@ body {
 .mood-box {
   text-align: center;
   place-content: center;
+  border: solid #799fdc 3px;
+  border-radius: 15px;
+  margin-top: 20px;
 }
 
 .week-box {
@@ -41,11 +48,12 @@ body {
 }
 
 .tasks-box {
-  background-color: #a1c5ff;
+  background-color: #799fdc;
   color: white;
   border-radius: 15px;
   text-align: center;
   place-content: center;
+  height: 400px;
 }
 
 .priorities-box {
@@ -73,15 +81,27 @@ body {
   background-color: #f0c8c8;
   color: white;
   border-radius: 15px;
-  height: 350px;
+  height: 500px;
   margin-top: 20px;
   text-align: center;
   place-content: center;
 }
 
+.note-text {
+  height: 200px;
+  width: 400px;
+  border-radius: 20px;
+}
+
+.flower {
+  mix-blend-mode: multiply;
+  height: 130px;
+  width: auto;
+}
+
 .gratitude-box {
-  background-color: #a1c5ff;
-  color: white;
+  color: black;
+  border: solid #799fdc 3px;
   border-radius: 15px;
   height: 200px;
   margin-top: 20px;
@@ -89,7 +109,8 @@ body {
   place-content: center;
 }
 
-.textarea {
+.gratitude-text {
   height: 100px;
   width: 400px;
+  border-radius: 20px;
 }
