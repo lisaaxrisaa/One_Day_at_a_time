@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <link href="index.css" rel="stylesheet" />
-    <title>Daily Journal</title>
+    <!-- <title>Daily Journal</title>
   </head>
   <body>
     <header>
@@ -56,8 +56,8 @@
           <li>JavaScript</li>
         </ul>
       </header>
-    </section>
-
+    </section> -->
+<body>
     <div class="container">
       <div class="column-one">
         <h2>One Day at a Time</h2>
@@ -78,7 +78,7 @@
             <li>Priority 3</li>
           </ul>
           <img
-            src="mood/heart.avif"
+            src="img/heart.avif"
             alt="Red heart"
             class="heart"
             style="display: block; margin-left: 5px"
@@ -122,52 +122,46 @@
         <div id="mood" class="mood-box">
           <h2>Today's Mood</h2>
           <span>
-            <input type="radio" id="excited" name="emotion" value="excited" />
-            <label for="excited">
+            <button id="mood-button">
               <img
-                src="mood/excited.jpg"
+              id="excited-button"
+                src="img/excited-outline.svg"
                 alt="Excited face"
-                width="50"
-                height="50"
+                width="55"
+                height="55"
               />
-            </label>
-            <input type="radio" id="happy" name="emotion" value="happy" />
-            <label for="happy">
               <img
-                src="mood/happy.png"
+                src="img/happy-outline.svg"
                 alt="Happy face"
-                width="50"
-                height="50"
+                width="55"
+                height="55"
               />
-            </label>
-            <input type="radio" id="neutral" name="emotion" value="neutral" />
-            <label for="neutral">
               <img
-                src="mood/neautral.png"
+                src="img/neautral-outline.svg"
                 alt="Neutral face"
-                width="50"
-                height="50"
+                width="55"
+                height="55"
               />
-            </label>
-            <input type="radio" id="sad" name="emotion" value="sad" />
-            <label for="sad">
-              <img src="mood/sad.png" alt="Sad face" width="50" height="50" />
-            </label>
-            <input type="radio" id="angry" name="emotion" value="angry" />
-            <label for="angry">
+              <img src="img/sad-outline.svg" 
+              alt="Sad face" 
+              width="55" 
+              height="55" 
+              />
               <img
-                src="mood/angry.png"
+                src="img/angry-outline.svg"
                 alt="Angry face"
                 width="50"
                 height="50"
               />
-            </label>
+              </button>
           </span>
         </div>
 
+        <script src="index.js" defer></script>
+
         <div id="notes" class="notes-box">
           <img
-            src="mood/flower.png"
+            src="img/flower.png"
             alt="Red Flower"
             class="flower"
             style="display: block; margin-left: 325px; margin-top: -120px"
