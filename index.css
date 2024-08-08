@@ -42,6 +42,10 @@ body {
   margin-top: 20px;
 }
 
+.mood-button {
+  border: none;
+}
+
 .week-box {
   text-align: center;
   place-content: center;
@@ -95,7 +99,7 @@ body {
 
 .flower {
   mix-blend-mode: multiply;
-  height: 130px;
+  height: 150px;
   width: auto;
 }
 
