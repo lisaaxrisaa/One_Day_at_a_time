@@ -121,18 +121,20 @@
 
         <div id="mood" class="mood-box">
           <h2>Today's Mood</h2>
-          <span>
-            <button class="mood-button" data-outline="img/excited-outline.svg" data-filled="img/excited-filled.svg">
+          <label>
+            <input type="radio" id ="excited" class="mood-button" value="excited-face" data-outline="img/excited-outline.svg" data-fill="img/excited-filled.svg">
+            <label for="excited-face">
               <img
               class="mood-img"
                 src="img/excited-outline.svg"
                 alt="Excited face"
                 width="55"
                 height="55"
-                
               />
-              </button>
-              <button class="mood-button" data-outline="img/happy-outline.svg" data-filled="img/happy-filled.svg">
+          </label>
+              </input>
+              <input type="radio" id ="happy" class="mood-button" value="happy-face" data-outline="happy-outline.svg" data-fill="img/happy-filled.svg">
+            <label for="happy-face">
                 <img
                 class="mood-img"
                 src="img/happy-outline.svg"
@@ -140,8 +142,10 @@
                 width="55"
                 height="55"
               />
-              </button>
-              <button class="mood-button" data-outline="img/neautral-outline.svg" data-filled="img/neautral-filled.svg">
+            </label>
+          </input>
+          <input type="radio" id ="neutral" class="mood-button" value="neutral-face" data-outline="img/neautral-outline.svg" data-fill="img/happy-filled.svg">
+          <label for="neutral-face">
                 <img
                 class="mood-img"
                 src="img/neautral-outline.svg"
@@ -149,8 +153,10 @@
                 width="55"
                 height="55"
               />
-            </button>
-            <button class="mood-button" data-outline="img/sad-outline.svg" data-filled="img/sad-filled.svg">
+          </label>
+        </input>
+        <input type="radio" id ="sad" class="mood-button" value="sad-face" data-outline="img/sad-outline.svg" data-fill="img.happy-filled.svg">
+        <label for="sad-face">
               <img 
               class="mood-img"
               src="img/sad-outline.svg" 
@@ -158,8 +164,10 @@
               width="55" 
               height="55" 
               />
-            </button>
-              <button class="mood-button" data-outline="img/angry-outline.svg" data-filled="img/angry-filled.svg">
+        </label>
+      </input>
+      <input type="radio" id ="angry" class="mood-button" value="angry-face" data-outline="img/angry-outline.svg" data-fill="img/angry-filled.svg">
+      <label for="angry-face">
                 <img
                 class="mood-img"
               src="img/angry-outline.svg"
@@ -167,7 +175,8 @@
               width="50"
               height="50"
             />
-            </button>
+      </label>
+    </input>
              
           </span>
         </div>

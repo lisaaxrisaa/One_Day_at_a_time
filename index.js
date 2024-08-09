@@ -25,12 +25,12 @@ document.addEventListener('DOMContentLoaded', function () {
 //   button.addEventListener('click', changeMood);
 // });
 
-let moodButtons = document.querySelectorAll('.mood-button');
+let moodButtons = document.querySelectorAll('input[type="radio"]');
 
 for (let i = 0; i < moodButtons.length; i++) {
   const button = moodButtons[i];
 
-  button.addEventListener('click', function () {
+  button.addEventListener('change', function () {
     const img = button.querySelector('.mood-img');
     const currentSrc = img.src;
     const outlinePath = button.getAttribute('data-outline');
