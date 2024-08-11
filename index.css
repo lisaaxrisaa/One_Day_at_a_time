@@ -4,11 +4,6 @@ body {
   margin: 0 auto;
 }
 
-.what-is {
-  background-color: #6688be;
-  color: white;
-}
-
 .container {
   display: grid;
   /* box-sizing: border-box; */
@@ -18,13 +13,13 @@ body {
   justify-content: center;
   align-items: center; */
   gap: 20px;
-  border: solid black 2px;
+  border: solid #8d9db6 2px;
   padding: 30px;
   border-radius: 25px;
 }
 
 .date-box {
-  background-color: #799fdc;
+  background-color: #aac2e7;
   color: white;
   text-align: center;
   place-content: center;
@@ -37,7 +32,7 @@ body {
 .mood-box {
   text-align: center;
   place-content: center;
-  border: solid #799fdc 3px;
+  border: solid #8d9db6 3px;
   border-radius: 15px;
   margin-top: 20px;
 }
@@ -45,6 +40,10 @@ body {
 .mood-button {
   border: none;
   background-color: white;
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
 
 .week-box {
@@ -52,8 +51,26 @@ body {
   place-content: center;
 }
 
+.week-button {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.week-button + label {
+  padding: 10px;
+  border-radius: 50%;
+  background-color: transparent;
+}
+
+.week-button:checked + label {
+  background-color: #f5d7d7;
+  color: white;
+}
+
 .tasks-box {
-  background-color: #799fdc;
+  background-color: #aac2e7;
   color: white;
   border-radius: 15px;
   text-align: center;
@@ -62,7 +79,7 @@ body {
 }
 
 .priorities-box {
-  background-color: #f0c8c8;
+  background-color: #f5d7d7;
   color: white;
   height: 300px;
   border-radius: 15px;
@@ -83,7 +100,7 @@ body {
 }
 
 .notes-box {
-  background-color: #f0c8c8;
+  background-color: #f5d7d7;
   color: white;
   border-radius: 15px;
   height: 500px;
@@ -106,7 +123,7 @@ body {
 
 .gratitude-box {
   color: black;
-  border: solid #799fdc 3px;
+  border: solid #8d9db6 3px;
   border-radius: 15px;
   height: 200px;
   margin-top: 20px;
