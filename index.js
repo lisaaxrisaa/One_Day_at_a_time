@@ -7,40 +7,53 @@ document.addEventListener('DOMContentLoaded', function () {
   document.getElementById('date-demo').textContent = d.toDateString();
 });
 
-// function changeMood() {
-//   const img = document.getElementById('excited-button');
-//   const whiteImg = 'img/excited-outline.svg';
-//   const blackImg = 'img/excited-filled.svg';
-//   if (img.src.endsWith(whiteImg)) {
-//     img.src = blackImg;
-//     img.alt = 'Excited face filled';
-//   } else {
-//     img.src = whiteImg;
-//     img.alt = 'Excited Face outline';
-//   }
+// let moodButtons = document.querySelectorAll('input[type="radio"]');
+// let previousButton = null;
+
+// for (let i = 0; i < moodButtons.length; i++) {
+//   const button = moodButtons[i];
+
+//   button.addEventListener('change', function () {
+//     if (previousButton) {
+//       const prevLabel = document.querySelector(
+//         `label[for="${previousButton.id}"]`
+//       );
+//       const prevImg = prevLabel.querySelector('.mood-img');
+//       prevImg.src = previousButton.getAttribute('data-outline');
+//     }
+
+//     const label = document.querySelector(`label[for="${button.id}"]`);
+//     const img = label.querySelector('.mood-img');
+//     img.src = button.getAttribute('data-fill');
+//     img.alt = button.value;
+
+//     previousButton = button;
+//   });
 // }
 
-// document.addEventListener('DOMContentLoaded', function () {
-//   const button = document.getElementById('mood-button');
-//   button.addEventListener('click', changeMood);
-// });
-
 let moodButtons = document.querySelectorAll('input[type="radio"]');
+let previousButton = null;
 
 for (let i = 0; i < moodButtons.length; i++) {
   const button = moodButtons[i];
 
-  button.addEventListener('change', function () {
-    const img = button.querySelector('.mood-img');
-    const currentSrc = img.src;
-    const outlinePath = button.getAttribute('data-outline');
-    const filledPath = button.getAttribute('data-filled');
-    if (currentSrc.endsWith(outlinePath)) {
-      img.src = filledPath;
-      img.alt = 'Filled face';
-    } else {
-      img.src = outlinePath;
-      img.alt = 'Outline face';
+  button.addEventListener('click', function () {
+    const label = document.querySelector(`label[for="${button.id}"]`);
+    const img = label.querySelector('.mood-img');
+
+    if (previousButton) {
+      const prevLabel = document.querySelector(
+        `label[for="${previousButton.id}"]`
+      );
+      const prevImg = prevLabel.querySelector('.mood-img');
+      prevImg.src = previousButton.getAttribute('data-outline');
     }
+
+    const outlinePath = button.getAttribute('data-outline');
+    const filledPath = button.getAttribute('data-fill');
+    img.src = filledPath;
+    img.alt = `${button.value}`;
+
+    previousButton = button;
   });
 }
