@@ -4,6 +4,12 @@ body {
   margin: 0 auto;
 }
 
+h1 {
+  color: #a8aac8;
+  font-family: 'Dancing Script', sans-serif;
+  font-size: 80px;
+}
+
 .container {
   display: grid;
   /* box-sizing: border-box; */
@@ -44,6 +50,10 @@ body {
   opacity: 0;
   width: 0;
   height: 0;
+}
+
+.mood-button + label {
+  padding: 10px;
 }
 
 .week-box {
