@@ -67,26 +67,50 @@ addTaskBtn.addEventListener('click', function () {
   const taskText = taskInput.value;
   if (taskText !== '') {
     const newTask = document.createElement('li');
-    const checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    checkbox.classList.add('delete-checkbox');
-
-    const taskContent = document.createElement('span');
-    taskContent.textContent = taskText;
-
-    newTask.appendChild(checkbox);
-    newTask.appendChild(taskContent);
+    newTask.innerHTML = `<input type="checkbox" class="delete-checkbox"> ${taskText}`;
     taskList.appendChild(newTask);
     taskInput.value = '';
   }
 });
 
 deleteCompletedTasksBtn.addEventListener('click', function () {
-  const checkboxes = taskList.querySelectorAll('.delete-checkbox');
+  const checkboxes = document.querySelectorAll('.delete-checkbox');
   checkboxes.forEach((checkbox) => {
     if (checkbox.checked) {
-      const taskItem = checkbox.parentElement;
-      taskItem.remove();
+      checkbox.parentElement.remove();
     }
   });
 });
+
+// const taskInput = document.getElementById('taskInput');
+// const addTaskBtn = document.getElementById('addTaskButton');
+// const taskList = document.getElementById('taskList');
+// const deleteCompletedTasksBtn = document.getElementById('deleteButton');
+
+// addTaskBtn.addEventListener('click', function () {
+//   const taskText = taskInput.value;
+//   if (taskText !== '') {
+//     const newTask = document.createElement('li');
+//     const checkbox = document.createElement('input');
+//     checkbox.type = 'checkbox';
+//     checkbox.classList.add('delete-checkbox');
+
+//     const taskContent = document.createElement('span');
+//     taskContent.textContent = taskText;
+
+//     newTask.appendChild(checkbox);
+//     newTask.appendChild(taskContent);
+//     taskList.appendChild(newTask);
+//     taskInput.value = '';
+//   }
+// });
+
+// deleteCompletedTasksBtn.addEventListener('click', function () {
+//   const checkboxes = taskList.querySelectorAll('.delete-checkbox');
+//   checkboxes.forEach((checkbox) => {
+//     if (checkbox.checked) {
+//       const taskItem = checkbox.parentElement;
+//       taskItem.remove();
+//     }
+//   });
+// });
