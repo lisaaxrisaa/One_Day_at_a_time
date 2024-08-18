@@ -72,6 +72,7 @@ h1 {
   padding: 10px;
   border-radius: 50%;
   background-color: transparent;
+  color: #f5d7d7;
 }
 
 .week-button:checked + label {
