@@ -81,3 +81,26 @@ deleteCompletedTasksBtn.addEventListener('click', function () {
     }
   });
 });
+
+const moodList = [
+  'excited',
+  'happy',
+  'surprised',
+  'neutral',
+  'trouble',
+  'sad',
+  'angry',
+];
+
+function logMood(event) {
+  const clickedLabel = event.target.parentElement;
+  const radioId = clickedLabel.getAttribute('for');
+
+  if (moodList.includes(radioId)) {
+    console.log(`Selected mood: ${radioId}`);
+  }
+}
+const moodImages = document.querySelectorAll('.mood-img');
+moodImages.forEach((img) => {
+  img.addEventListener('click', logMood);
+});
