@@ -1,7 +1,3 @@
-// const d = new Date();
-
-// document.getElementById('date').innerHTML = d;
-
 document.addEventListener('DOMContentLoaded', function () {
   const d = new Date();
   document.getElementById('date-demo').textContent = d.toDateString();
@@ -31,6 +27,34 @@ document.addEventListener('DOMContentLoaded', function () {
 //   });
 // }
 
+let moodList = [
+  'excited',
+  'happy',
+  'surprise',
+  'neutral',
+  'trouble',
+  'sad',
+  'angry',
+];
+
+let generateMoodButtons = () => {
+  let moodContainer = document.getElementById('mood');
+  moodContainer.innerHTML = `
+        ${moodList
+          .map(
+            (mood) => `
+            <input type="radio" id="${mood}" class="mood-button" name="mood" value="${mood}-face" data-outline="img/${mood}-outline.svg" data-fill="img/${mood}-filled.svg">
+            <label for="${mood}">
+                <img class="mood-img" src="img/${mood}-outline.svg" alt="${mood} face" width="55" height="55"/>
+            </label>
+        `
+          )
+          .join('')}
+    `;
+};
+
+generateMoodButtons();
+
 let moodButtons = document.querySelectorAll('input[type="radio"]');
 let previousButton = null;
 
@@ -40,6 +64,8 @@ for (let i = 0; i < moodButtons.length; i++) {
   button.addEventListener('click', function () {
     const label = document.querySelector(`label[for="${button.id}"]`);
     const img = label.querySelector('.mood-img');
+
+    console.log(`Mood selected: ${button.value}`);
 
     if (previousButton) {
       const prevLabel = document.querySelector(
@@ -82,25 +108,25 @@ deleteCompletedTasksBtn.addEventListener('click', function () {
   });
 });
 
-const moodList = [
-  'excited',
-  'happy',
-  'surprised',
-  'neutral',
-  'trouble',
-  'sad',
-  'angry',
-];
+// const moodList = [
+//   'excited',
+//   'happy',
+//   'surprised',
+//   'neutral',
+//   'trouble',
+//   'sad',
+//   'angry',
+// ];
 
-function logMood(event) {
-  const clickedLabel = event.target.parentElement;
-  const radioId = clickedLabel.getAttribute('for');
+// function logMood(event) {
+//   const clickedLabel = event.target.parentElement;
+//   const radioId = clickedLabel.getAttribute('for');
 
-  if (moodList.includes(radioId)) {
-    console.log(`Selected mood: ${radioId}`);
-  }
-}
-const moodImages = document.querySelectorAll('.mood-img');
-moodImages.forEach((img) => {
-  img.addEventListener('click', logMood);
-});
+//   if (moodList.includes(radioId)) {
+//     console.log(`Selected mood: ${radioId}`);
+//   }
+// }
+// const moodImages = document.querySelectorAll('.mood-img');
+// moodImages.forEach((img) => {
+//   img.addEventListener('click', logMood);
+// });
