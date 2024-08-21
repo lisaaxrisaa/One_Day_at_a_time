@@ -3,30 +3,6 @@ document.addEventListener('DOMContentLoaded', function () {
   document.getElementById('date-demo').textContent = d.toDateString();
 });
 
-// let moodButtons = document.querySelectorAll('input[type="radio"]');
-// let previousButton = null;
-
-// for (let i = 0; i < moodButtons.length; i++) {
-//   const button = moodButtons[i];
-
-//   button.addEventListener('change', function () {
-//     if (previousButton) {
-//       const prevLabel = document.querySelector(
-//         `label[for="${previousButton.id}"]`
-//       );
-//       const prevImg = prevLabel.querySelector('.mood-img');
-//       prevImg.src = previousButton.getAttribute('data-outline');
-//     }
-
-//     const label = document.querySelector(`label[for="${button.id}"]`);
-//     const img = label.querySelector('.mood-img');
-//     img.src = button.getAttribute('data-fill');
-//     img.alt = button.value;
-
-//     previousButton = button;
-//   });
-// }
-
 let moodList = [
   'excited',
   'happy',
@@ -43,6 +19,7 @@ let generateMoodButtons = () => {
         ${moodList
           .map(
             (mood) => `
+    
             <input type="radio" id="${mood}" class="mood-button" name="mood" value="${mood}-face" data-outline="img/${mood}-outline.svg" data-fill="img/${mood}-filled.svg">
             <label for="${mood}">
                 <img class="mood-img" src="img/${mood}-outline.svg" alt="${mood} face" width="55" height="55"/>
@@ -84,29 +61,60 @@ for (let i = 0; i < moodButtons.length; i++) {
   });
 }
 
-const taskInput = document.getElementById('taskInput');
-const addTaskBtn = document.getElementById('addTaskButton');
-const taskList = document.getElementById('taskList');
-const deleteCompletedTasksBtn = document.getElementById('deleteButton');
+let tasks = ['Task 1', 'Task 2', 'Task 3'];
 
-addTaskBtn.addEventListener('click', function () {
-  const taskText = taskInput.value;
-  if (taskText !== '') {
-    const newTask = document.createElement('li');
-    newTask.innerHTML = `<input type="checkbox" class="delete-checkbox"> ${taskText}`;
-    taskList.appendChild(newTask);
-    taskInput.value = '';
+function renderTasks() {
+  let taskList = document.getElementById('taskList');
+  taskList.innerHTML = '';
+  for (let i = 0; i < tasks.length; i++) {
+    let li = document.createElement('li');
+    li.innerHTML = `${tasks[i]} <button onclick="deleteTask(${i})">Delete</button>`;
+    taskList.appendChild(li);
   }
-});
+}
 
-deleteCompletedTasksBtn.addEventListener('click', function () {
-  const checkboxes = document.querySelectorAll('.delete-checkbox');
-  checkboxes.forEach((checkbox) => {
-    if (checkbox.checked) {
-      checkbox.parentElement.remove();
-    }
-  });
-});
+function addTask() {
+  let taskInput = document.getElementById('taskInput');
+  let task = taskInput.value.trim();
+  if (task) {
+    tasks.push(task);
+    taskInput.value = '';
+    renderTasks();
+  }
+}
+
+function deleteTask(index) {
+  tasks.splice(index, 1);
+  renderTasks();
+}
+
+document.getElementById('addTaskButton').addEventListener('click', addTask);
+
+renderTasks();
+
+// const taskInput = document.getElementById('taskInput');
+// const addTaskBtn = document.getElementById('addTaskButton');
+// const taskList = document.getElementById('taskList');
+// const deleteCompletedTasksBtn = document.getElementById('deleteButton');
+
+// addTaskBtn.addEventListener('click', function () {
+//   const taskText = taskInput.value;
+//   if (taskText !== '') {
+//     const newTask = document.createElement('li');
+//     newTask.innerHTML = `<input type="checkbox" class="delete-checkbox"> ${taskText}`;
+//     taskList.appendChild(newTask);
+//     taskInput.value = '';
+//   }
+// });
+
+// deleteCompletedTasksBtn.addEventListener('click', function () {
+//   const checkboxes = document.querySelectorAll('.delete-checkbox');
+//   checkboxes.forEach((checkbox) => {
+//     if (checkbox.checked) {
+//       checkbox.parentElement.remove();
+//     }
+//   });
+// });
 
 // const moodList = [
 //   'excited',
