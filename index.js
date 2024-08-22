@@ -15,7 +15,7 @@ let moodList = [
 
 let generateMoodButtons = () => {
   let moodContainer = document.getElementById('mood');
-  moodContainer.innerHTML = `
+  moodContainer.innerHTML += `
         ${moodList
           .map(
             (mood) => `
