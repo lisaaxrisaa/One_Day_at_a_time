@@ -66,9 +66,35 @@ let tasks = ['Task 1', 'Task 2', 'Task 3'];
 function renderTasks() {
   let taskList = document.getElementById('taskList');
   taskList.innerHTML = '';
+
   for (let i = 0; i < tasks.length; i++) {
     let li = document.createElement('li');
-    li.innerHTML = `${tasks[i]} <button onclick="deleteTask(${i})">Delete</button>`;
+
+    let checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.className = 'task-checkbox';
+    checkbox.addEventListener('change', () => {
+      li.classList.toggle('completed', checkbox.checked);
+    });
+
+    let taskText = document.createElement('span');
+    taskText.textContent = tasks[i];
+
+    let deleteButton = document.createElement('button');
+    deleteButton.textContent = 'X';
+    deleteButton.className = 'delete-button';
+    deleteButton.onclick = function () {
+      if (checkbox.checked) {
+        deleteTask(i);
+      } else {
+        alert('Please select a task before deleting.');
+      }
+    };
+
+    li.appendChild(checkbox);
+    li.appendChild(taskText);
+    li.appendChild(deleteButton);
+
     taskList.appendChild(li);
   }
 }
