@@ -62,6 +62,7 @@ for (let i = 0; i < moodButtons.length; i++) {
 }
 
 let tasks = ['Task 1', 'Task 2', 'Task 3'];
+let finishedTasks = [];
 
 function renderTasks() {
   let taskList = document.getElementById('taskList');
@@ -73,19 +74,20 @@ function renderTasks() {
     let checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.className = 'task-checkbox';
-    checkbox.addEventListener('change', () => {
-      li.classList.toggle('completed', checkbox.checked);
+
+    checkbox.addEventListener('change', function () {
+      handleCheckboxChange(i, checkbox);
     });
 
     let taskText = document.createElement('span');
     taskText.textContent = tasks[i];
 
     let deleteButton = document.createElement('button');
-    deleteButton.textContent = 'X';
+    deleteButton.textContent = 'Done';
     deleteButton.className = 'delete-button';
     deleteButton.onclick = function () {
       if (checkbox.checked) {
-        deleteTask(i);
+        moveTaskToFinished(i);
       } else {
         alert('Please select a task before deleting.');
       }
@@ -96,6 +98,15 @@ function renderTasks() {
     li.appendChild(deleteButton);
 
     taskList.appendChild(li);
+  }
+
+  let finishedTaskList = document.getElementById('finishedTask');
+  finishedTaskList.innerHTML = '';
+
+  for (let j = 0; j < finishedTasks.length; j++) {
+    let li = document.createElement('li');
+    li.textContent = finishedTasks[j];
+    finishedTaskList.appendChild(li);
   }
 }
 
@@ -109,58 +120,38 @@ function addTask() {
   }
 }
 
-function deleteTask(index) {
+// function deleteTask(index) {
+//   tasks.splice(index, 1);
+//   renderTasks();
+// }
+
+function moveTaskToFinished(index) {
+  let taskText = tasks[index];
+  finishedTasks.push(taskText);
   tasks.splice(index, 1);
   renderTasks();
 }
 
+function clearTask() {
+  let taskList = document.getElementById('taskList');
+  let remainingTasks = [];
+
+  for (let i = 0; i < taskList.children.length; i++) {
+    let checkbox = taskList.children[i].querySelector('input[type="checkbox"]');
+    let taskText = taskList.children[i].querySelector('span').textContent;
+
+    if (!checkbox.checked) {
+      remainingTasks.push(taskText);
+    }
+  }
+
+  tasks = remainingTasks;
+  renderTasks();
+}
+
+function handleCheckboxChange(index, checkbox) {}
+
 document.getElementById('addTaskButton').addEventListener('click', addTask);
+document.getElementById('clearTask').addEventListener('click', clearTask);
 
 renderTasks();
-
-// const taskInput = document.getElementById('taskInput');
-// const addTaskBtn = document.getElementById('addTaskButton');
-// const taskList = document.getElementById('taskList');
-// const deleteCompletedTasksBtn = document.getElementById('deleteButton');
-
-// addTaskBtn.addEventListener('click', function () {
-//   const taskText = taskInput.value;
-//   if (taskText !== '') {
-//     const newTask = document.createElement('li');
-//     newTask.innerHTML = `<input type="checkbox" class="delete-checkbox"> ${taskText}`;
-//     taskList.appendChild(newTask);
-//     taskInput.value = '';
-//   }
-// });
-
-// deleteCompletedTasksBtn.addEventListener('click', function () {
-//   const checkboxes = document.querySelectorAll('.delete-checkbox');
-//   checkboxes.forEach((checkbox) => {
-//     if (checkbox.checked) {
-//       checkbox.parentElement.remove();
-//     }
-//   });
-// });
-
-// const moodList = [
-//   'excited',
-//   'happy',
-//   'surprised',
-//   'neutral',
-//   'trouble',
-//   'sad',
-//   'angry',
-// ];
-
-// function logMood(event) {
-//   const clickedLabel = event.target.parentElement;
-//   const radioId = clickedLabel.getAttribute('for');
-
-//   if (moodList.includes(radioId)) {
-//     console.log(`Selected mood: ${radioId}`);
-//   }
-// }
-// const moodImages = document.querySelectorAll('.mood-img');
-// moodImages.forEach((img) => {
-//   img.addEventListener('click', logMood);
-// });
