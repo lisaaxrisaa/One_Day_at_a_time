@@ -100,13 +100,13 @@ h1 {
 .tasks-box > button {
   background-color: black;
   color: white;
-  border-radius: 10px;
+  border-radius: 7px;
 }
 
-.delete-button {
+.done-button {
   background-color: black;
   color: white;
-  border-radius: 10px;
+  border-radius: 7px;
 }
 
 .priorities-box {
@@ -117,6 +117,24 @@ h1 {
   margin-top: 20px;
   text-align: center;
   place-content: center;
+}
+
+.priorities-box > button {
+  background-color: #edb176;
+  color: white;
+  border-radius: 7px;
+}
+
+.upDownButton {
+  background-color: #edb176;
+  color: white;
+  border-radius: 7px;
+}
+
+.delete-button {
+  background-color: #edb176;
+  color: white;
+  border-radius: 7px;
 }
 
 /* .priorities-box img {

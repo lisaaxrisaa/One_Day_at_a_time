@@ -61,7 +61,7 @@ for (let i = 0; i < moodButtons.length; i++) {
   });
 }
 
-let tasks = ['Task 1', 'Task 2', 'Task 3'];
+let tasks = ['Task 1 ', 'Task 2 ', 'Task 3 '];
 let finishedTasks = [];
 
 function renderTasks() {
@@ -84,7 +84,7 @@ function renderTasks() {
 
     let deleteButton = document.createElement('button');
     deleteButton.textContent = 'Done';
-    deleteButton.className = 'delete-button';
+    deleteButton.className = 'done-button';
     deleteButton.onclick = function () {
       if (checkbox.checked) {
         moveTaskToFinished(i);
@@ -155,3 +155,55 @@ document.getElementById('addTaskButton').addEventListener('click', addTask);
 document.getElementById('clearTask').addEventListener('click', clearTask);
 
 renderTasks();
+
+const addPriorityButton = document.getElementById('addPriorityButton');
+const priorityInput = document.getElementById('prioritiesInput');
+const priorityList = document.getElementById('priorityList');
+
+addPriorityButton.addEventListener('click', function () {
+  const priorityText = priorityInput.value.trim();
+  if (priorityText) {
+    const newPriority = document.createElement('li');
+    newPriority.textContent = priorityText;
+    addButtonsToPriority(newPriority);
+    priorityList.appendChild(newPriority);
+    priorityInput.value = '';
+  }
+});
+
+function addButtonsToPriority(li) {
+  const upButton = document.createElement('button');
+  upButton.textContent = '↑';
+  upButton.className = 'upDownButton';
+  upButton.addEventListener('click', function () {
+    const previousItem = li.previousElementSibling;
+    if (previousItem) {
+      priorityList.insertBefore(li, previousItem);
+    }
+  });
+
+  const downButton = document.createElement('button');
+  downButton.textContent = '↓';
+  downButton.className = 'upDownButton';
+  downButton.addEventListener('click', function () {
+    const nextItem = li.nextElementSibling;
+    if (nextItem) {
+      priorityList.insertBefore(nextItem, li);
+    }
+  });
+
+  const deleteButton = document.createElement('button');
+  deleteButton.textContent = 'X';
+  deleteButton.className = 'delete-button';
+  deleteButton.addEventListener('click', function () {
+    priorityList.removeChild(li);
+  });
+
+  li.appendChild(upButton);
+  li.appendChild(downButton);
+  li.appendChild(deleteButton);
+}
+
+document.querySelectorAll('#priorityList li').forEach((li) => {
+  addButtonsToPriority(li);
+});
