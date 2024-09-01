@@ -64,6 +64,11 @@ for (let i = 0; i < moodButtons.length; i++) {
 let tasks = ['Task 1 ', 'Task 2 ', 'Task 3 '];
 let finishedTasks = [];
 
+function updateLocalStorage() {
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+  localStorage.setItem('finishedTasks', JSON.stringify(finishedTasks));
+}
+
 function renderTasks() {
   let taskList = document.getElementById('taskList');
   taskList.innerHTML = '';
@@ -160,38 +165,54 @@ const addPriorityButton = document.getElementById('addPriorityButton');
 const priorityInput = document.getElementById('prioritiesInput');
 const priorityList = document.getElementById('priorityList');
 
+let draggedItem = null;
+
 addPriorityButton.addEventListener('click', function () {
   const priorityText = priorityInput.value.trim();
   if (priorityText) {
     const newPriority = document.createElement('li');
     newPriority.textContent = priorityText;
-    addButtonsToPriority(newPriority);
+
+    newPriority.draggable = true;
+
+    addDragEvents(newPriority);
+
+    addDeleteButton(newPriority);
+
     priorityList.appendChild(newPriority);
+
     priorityInput.value = '';
   }
 });
 
-function addButtonsToPriority(li) {
-  const upButton = document.createElement('button');
-  upButton.textContent = '↑';
-  upButton.className = 'upDownButton';
-  upButton.addEventListener('click', function () {
-    const previousItem = li.previousElementSibling;
-    if (previousItem) {
-      priorityList.insertBefore(li, previousItem);
-    }
+function addDragEvents(li) {
+  li.addEventListener('dragstart', function () {
+    draggedItem = li;
+    setTimeout(() => {
+      li.style.display = 'none';
+    }, 0);
   });
 
-  const downButton = document.createElement('button');
-  downButton.textContent = '↓';
-  downButton.className = 'upDownButton';
-  downButton.addEventListener('click', function () {
-    const nextItem = li.nextElementSibling;
-    if (nextItem) {
-      priorityList.insertBefore(nextItem, li);
-    }
+  li.addEventListener('dragend', function () {
+    setTimeout(() => {
+      draggedItem.style.display = 'block';
+      draggedItem = null;
+    }, 0);
   });
 
+  li.addEventListener('dragover', function (e) {
+    e.preventDefault();
+  });
+
+  li.addEventListener('drop', function (e) {
+    e.preventDefault();
+    if (draggedItem) {
+      priorityList.insertBefore(draggedItem, li);
+    }
+  });
+}
+
+function addDeleteButton(li) {
   const deleteButton = document.createElement('button');
   deleteButton.textContent = 'X';
   deleteButton.className = 'delete-button';
@@ -199,11 +220,57 @@ function addButtonsToPriority(li) {
     priorityList.removeChild(li);
   });
 
-  li.appendChild(upButton);
-  li.appendChild(downButton);
   li.appendChild(deleteButton);
 }
+// Priorities with up and down button
+// const addPriorityButton = document.getElementById('addPriorityButton');
+// const priorityInput = document.getElementById('prioritiesInput');
+// const priorityList = document.getElementById('priorityList');
 
-document.querySelectorAll('#priorityList li').forEach((li) => {
-  addButtonsToPriority(li);
-});
+// addPriorityButton.addEventListener('click', function () {
+//   const priorityText = priorityInput.value.trim();
+//   if (priorityText) {
+//     const newPriority = document.createElement('li');
+//     newPriority.textContent = priorityText;
+//     addButtonsToPriority(newPriority);
+//     priorityList.appendChild(newPriority);
+//     priorityInput.value = '';
+//   }
+// });
+
+// function addButtonsToPriority(li) {
+//   const upButton = document.createElement('button');
+//   upButton.textContent = '↑';
+//   upButton.className = 'upDownButton';
+//   upButton.addEventListener('click', function () {
+//     const previousItem = li.previousElementSibling;
+//     if (previousItem) {
+//       priorityList.insertBefore(li, previousItem);
+//     }
+//   });
+
+//   const downButton = document.createElement('button');
+//   downButton.textContent = '↓';
+//   downButton.className = 'upDownButton';
+//   downButton.addEventListener('click', function () {
+//     const nextItem = li.nextElementSibling;
+//     if (nextItem) {
+//       priorityList.insertBefore(nextItem, li);
+//     }
+//   });
+
+//   const deleteButton = document.createElement('button');
+//   deleteButton.textContent = 'X';
+//   deleteButton.className = 'delete-button';
+//   deleteButton.addEventListener('click', function () {
+//     priorityList.removeChild(li);
+//   });
+
+//   li.appendChild(upButton);
+//   li.appendChild(downButton);
+//   li.appendChild(deleteButton);
+// }
+
+// document.querySelectorAll('#priorityList li').forEach((li) => {
+//   addButtonsToPriority(li);
+// });
