@@ -4,9 +4,21 @@
     <meta charset="UTF-8" />
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <link href="index.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Pirata+One&display=swap" rel="stylesheet">
-    <!-- <title>Daily Journal</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Pirata+One&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.2.0/dist/css/datepicker.min.css"
+    />
+    <title>Daily Journal</title>
+  </head>
+  <!-- <title>Daily Journal</title>
   </head>
   <body>
     <header>
@@ -59,25 +71,28 @@
         </ul>
       </header>
     </section> -->
-<body>
+  <body>
     <div class="container">
       <div class="column-one">
         <h1>One Day at a Time</h1>
 
         <div id="tasks" class="tasks-box">
           <h2>Today's Tasks:</h2>
-          <input type="text" id="taskInput" placeholder="Enter task">
+          <input type="text" id="taskInput" placeholder="Enter task" />
           <button id="addTaskButton">Add</button>
           <ul id="taskList"></ul>
           <button type="button" id="clearTask">Delete Task</button>
           <h2>Finished Tasks:</h2>
           <ul id="finishedTask"></ul>
         </div>
-       
 
         <div id="priorities" class="priorities-box">
           <h2>Priorities</h2>
-          <input type="text" id="prioritiesInput" placeholder="Enter priority">
+          <input
+            type="text"
+            id="prioritiesInput"
+            placeholder="Enter priority"
+          />
           <button id="addPriorityButton">Add</button>
           <ul id="priorityList"></ul>
           <!-- <img
@@ -98,35 +113,75 @@
         <div id="week" class="week-box">
           <h2>This Week</h2>
           <span>
-            <input type="radio" id="Monday" class="week-button" name="week" value="Mon" />
+            <input
+              type="radio"
+              id="Monday"
+              class="week-button"
+              name="week"
+              value="Mon"
+            />
             <label for="Monday">Mon</label>
-            <input type="radio" id="Tuesday" class="week-button" name="week" value="Tue" />
+            <input
+              type="radio"
+              id="Tuesday"
+              class="week-button"
+              name="week"
+              value="Tue"
+            />
             <label for="Tuesday">Tue</label>
-            <input type="radio" id="Wednesday" class="week-button" name="week" value="Wed" />
+            <input
+              type="radio"
+              id="Wednesday"
+              class="week-button"
+              name="week"
+              value="Wed"
+            />
             <label for="Wednesday">Wed</label>
-            <input type="radio" id="Thursday" class="week-button" name="week" value="Thur" />
+            <input
+              type="radio"
+              id="Thursday"
+              class="week-button"
+              name="week"
+              value="Thur"
+            />
             <label for="Thursday">Thur</label>
-            <input type="radio" id="Friday" class="week-button" name="week" value="Fri" />
+            <input
+              type="radio"
+              id="Friday"
+              class="week-button"
+              name="week"
+              value="Fri"
+            />
             <label for="Friday">Fri</label>
-            <input type="radio" id="Saturday" class="week-button" name="week" value="Sat" />
+            <input
+              type="radio"
+              id="Saturday"
+              class="week-button"
+              name="week"
+              value="Sat"
+            />
             <label for="Saturday">Sat</label>
-            <input type="radio" id="Sunday" class="week-button" name="week" value="Sun" />
+            <input
+              type="radio"
+              id="Sunday"
+              class="week-button"
+              name="week"
+              value="Sun"
+            />
             <label for="Sunday">Sun</label>
           </span>
         </div>
 
         <div id="date" class="date-box">
           <h2>Date:</h2>
+          <input type="date" id="datepicker" class="form-control" />
           <div id="date-demo"></div>
         </div>
 
-        <script src="index.js" defer></script>
-
-        
         <div id="mood" class="mood-box">
-          <h2> Today's Mood</h2>
+          <h2>Today's Mood</h2>
         </div>
-            <!-- <input type="radio" id ="excited" class="mood-button" name="mood" value="excited-face" data-outline="img/excited-outline.svg" data-fill="img/excited-filled.svg">
+        <!-- <input type="radio" id ="excited" class="mood-button" name="mood" value="excited-face" data-outline="img/excited-outline.svg" data-fill="img/excited-filled.svg">
             <label for="excited">
               <img
               class="mood-img"
@@ -205,7 +260,6 @@
     </input>
              
           </span> -->
-    
 
         <div id="notes" class="notes-box">
           <!-- <img
@@ -223,5 +277,7 @@
     <footer>
       <p>&copy; 2024 One Day at a Time!</p>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.2.0/dist/js/datepicker.min.js"></script>
+    <script src="index.js" defer></script>
   </body>
 </html>

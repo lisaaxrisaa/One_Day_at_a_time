@@ -3,6 +3,13 @@ document.addEventListener('DOMContentLoaded', function () {
   document.getElementById('date-demo').textContent = d.toDateString();
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+  const datepicker = new datepicker(document.getElementById('datepicker'), {
+    format: 'dd/mm/yyyy',
+    autoHide: true,
+  });
+});
+
 let moodList = [
   'excited',
   'happy',
