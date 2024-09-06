@@ -1,13 +1,41 @@
 document.addEventListener('DOMContentLoaded', function () {
   const d = new Date();
   document.getElementById('date-demo').textContent = d.toDateString();
-});
 
-document.addEventListener('DOMContentLoaded', () => {
-  const datepicker = new datepicker(document.getElementById('datepicker'), {
-    format: 'dd/mm/yyyy',
-    autoHide: true,
-  });
+  if (!document.getElementById('datepicker').hasAttribute('data-initialized')) {
+    const datepickerElement = document.getElementById('datepicker');
+    const datepicker = new Datepicker(datepickerElement, {
+      format: 'dd/mm/yyyy',
+      autoHide: true,
+    });
+
+    datepickerElement.setAttribute('data-initialized', 'true');
+
+    datepickerElement.addEventListener('changeDate', function (event) {
+      const selectedDate = event.detail.date;
+      const formattedDate = new Date(selectedDate).toDateString();
+      document.getElementById('date-demo').textContent = formattedDate;
+
+      const dayOfWeek = new Date(selectedDate).getDay();
+      const days = [
+        'Sunday',
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday',
+      ];
+
+      const weekButtons = document.querySelectorAll('.week-button');
+      weekButtons.forEach((button) => (button.checked = false));
+
+      const dayRadioButton = document.getElementById(days[dayOfWeek]);
+      if (dayRadioButton) {
+        dayRadioButton.checked = true;
+      }
+    });
+  }
 });
 
 let moodList = [
@@ -68,13 +96,8 @@ for (let i = 0; i < moodButtons.length; i++) {
   });
 }
 
-let tasks = ['Task 1 ', 'Task 2 ', 'Task 3 '];
+let tasks = ['Task 1', 'Task 2', 'Task 3'];
 let finishedTasks = [];
-
-function updateLocalStorage() {
-  localStorage.setItem('tasks', JSON.stringify(tasks));
-  localStorage.setItem('finishedTasks', JSON.stringify(finishedTasks));
-}
 
 function renderTasks() {
   let taskList = document.getElementById('taskList');
@@ -95,19 +118,43 @@ function renderTasks() {
     taskText.textContent = tasks[i];
 
     let deleteButton = document.createElement('button');
-    deleteButton.textContent = 'Done';
-    deleteButton.className = 'done-button';
+    deleteButton.textContent = 'Delete';
+    deleteButton.className = 'delete-button';
     deleteButton.onclick = function () {
+      if (checkbox.checked) {
+        deleteTask(i);
+      } else {
+        alert('Please check the task before deleting.');
+      }
+    };
+
+    let doneButton = document.createElement('button');
+    doneButton.textContent = 'Done';
+    doneButton.className = 'done-button';
+    doneButton.onclick = function () {
       if (checkbox.checked) {
         moveTaskToFinished(i);
       } else {
-        alert('Please select a task before deleting.');
+        alert('Please check the task as done before moving it.');
+      }
+    };
+
+    let priorityButton = document.createElement('button');
+    priorityButton.textContent = 'Move to Priority';
+    priorityButton.className = 'priority-button';
+    priorityButton.onclick = function () {
+      if (checkbox.checked) {
+        moveToPriority(i);
+      } else {
+        alert('Please check the task before moving it to priority list.');
       }
     };
 
     li.appendChild(checkbox);
     li.appendChild(taskText);
+    li.appendChild(doneButton);
     li.appendChild(deleteButton);
+    li.appendChild(priorityButton);
 
     taskList.appendChild(li);
   }
@@ -129,13 +176,15 @@ function addTask() {
     tasks.push(task);
     taskInput.value = '';
     renderTasks();
+  } else {
+    alert('Please input task before adding.');
   }
 }
 
-// function deleteTask(index) {
-//   tasks.splice(index, 1);
-//   renderTasks();
-// }
+function deleteTask(index) {
+  tasks.splice(index, 1);
+  renderTasks();
+}
 
 function moveTaskToFinished(index) {
   let taskText = tasks[index];
@@ -144,27 +193,23 @@ function moveTaskToFinished(index) {
   renderTasks();
 }
 
-function clearTask() {
-  let taskList = document.getElementById('taskList');
-  let remainingTasks = [];
+function moveToPriority(index) {
+  let taskText = tasks[index];
+  const newPriority = document.createElement('li');
+  newPriority.textContent = taskText;
 
-  for (let i = 0; i < taskList.children.length; i++) {
-    let checkbox = taskList.children[i].querySelector('input[type="checkbox"]');
-    let taskText = taskList.children[i].querySelector('span').textContent;
+  newPriority.draggable = true;
+  addDragEvents(newPriority);
+  addDeleteButton(newPriority);
 
-    if (!checkbox.checked) {
-      remainingTasks.push(taskText);
-    }
-  }
-
-  tasks = remainingTasks;
+  priorityList.appendChild(newPriority);
+  tasks.splice(index, 1);
   renderTasks();
 }
 
 function handleCheckboxChange(index, checkbox) {}
 
 document.getElementById('addTaskButton').addEventListener('click', addTask);
-document.getElementById('clearTask').addEventListener('click', clearTask);
 
 renderTasks();
 
@@ -181,9 +226,7 @@ addPriorityButton.addEventListener('click', function () {
     newPriority.textContent = priorityText;
 
     newPriority.draggable = true;
-
     addDragEvents(newPriority);
-
     addDeleteButton(newPriority);
 
     priorityList.appendChild(newPriority);
@@ -229,6 +272,7 @@ function addDeleteButton(li) {
 
   li.appendChild(deleteButton);
 }
+
 // Priorities with up and down button
 // const addPriorityButton = document.getElementById('addPriorityButton');
 // const priorityInput = document.getElementById('prioritiesInput');
