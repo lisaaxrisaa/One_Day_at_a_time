@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
   if (!document.getElementById('datepicker').hasAttribute('data-initialized')) {
     const datepickerElement = document.getElementById('datepicker');
     const datepicker = new Datepicker(datepickerElement, {
-      format: 'dd/mm/yyyy',
+      format: 'mm/dd/yyyy',
       autoHide: true,
     });
 
