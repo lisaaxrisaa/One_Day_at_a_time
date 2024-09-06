@@ -42,7 +42,6 @@ h1 {
 .mood-box {
   text-align: center;
   place-content: center;
-  border: solid #000000 3px;
   border-radius: 15px;
   margin-top: 20px;
   background-color: #edb176;
@@ -110,6 +109,18 @@ h1 {
   border-radius: 7px;
 }
 
+.delete-button {
+  background-color: #edb176;
+  color: white;
+  border-radius: 7px;
+}
+
+.priority-button {
+  background-color: black;
+  color: white;
+  border-radius: 7px;
+}
+
 .priorities-box {
   background-color: #333030;
   color: white;
@@ -126,28 +137,22 @@ h1 {
   border-radius: 7px;
 }
 
-.upDownButton {
+/* .upDownButton {
   background-color: #edb176;
   color: white;
   border-radius: 7px;
-}
-
-.delete-button {
-  background-color: #edb176;
-  color: white;
-  border-radius: 7px;
-}
+} */
 
 /* .priorities-box img {
   text-align: left;
 } */
 
-.heart {
+/* .heart {
   height: 125px;
   width: 100px;
   mix-blend-mode: multiply;
   text-align: left;
-}
+} */
 
 .notes-box {
   background-color: #333030;
@@ -165,27 +170,11 @@ h1 {
   border-radius: 20px;
 }
 
-.flower {
+/* .flower {
   mix-blend-mode: multiply;
   height: 150px;
   width: auto;
-}
-
-.gratitude-box {
-  color: black;
-  border: solid #8d9db6 3px;
-  border-radius: 15px;
-  height: 200px;
-  margin-top: 20px;
-  text-align: center;
-  place-content: center;
-}
-
-.gratitude-text {
-  height: 100px;
-  width: 400px;
-  border-radius: 20px;
-}
+} */
 
 ul {
   list-style-type: none;
