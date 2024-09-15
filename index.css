@@ -39,6 +39,10 @@ h1 {
   padding-bottom: 30px;
 }
 
+.datepicker-cell {
+  color: black;
+}
+
 .mood-box {
   text-align: center;
   place-content: center;
